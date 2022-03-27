@@ -1,0 +1,41 @@
+steps :
+
+# build docker image 
+- name: 'gcr.io/cloud-builders/docker'
+  id: Build Jokes-service Image
+  args:
+  - 'build'
+  - '-t'
+  - 'gcr.io/$PROJECT_ID/jokes-service:latest'
+  - '-f'
+  - 'Dockerfile'
+  - '.'
+
+# docker push to container registry
+- name: 'gcr.io/cloud-builders/docker'
+  id: Publish Jokes-service Image
+  args:
+  - 'push'
+  - 'gcr.io/$PROJECT_ID/jokes-service:latest'
+
+# Clone deploy repository
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: Clone alumni deploy repository
+  entrypoint: /bin/sh
+  args:
+  - '-c'
+  - |
+    git clone https://github.com/harideveloper/ps-alumni-deployments.git && \
+    cd ps-alumni-deployments && \
+    git checkout master && \
+    git config user.email $(gcloud auth list --filter=status:ACTIVE --format='value(account)')
+# Deploy to GKE Cluster
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Deploy Jokes-service to GKE Cluster
+  args:
+  - 'apply'
+  - '-f'
+  - './ps-ui/'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=ps-alumni'

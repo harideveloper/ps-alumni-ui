@@ -74,7 +74,7 @@ const Services = () => {
         {/* Job Recommendations */}
         <article className="service">
           <div className="service__head">
-            <h3>Job Recommendations for you</h3>
+            <h3>Opportunities recommended for you</h3>
           </div>
           <ul className='service__list'>
             {Recommended_Jobs.map(job => 

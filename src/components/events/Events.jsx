@@ -14,9 +14,9 @@ const UpcomingEvents = [
 
 const LatestNews = [
   { name : 'Virtual Volunteering', newsdate : 'March 28, 2022'},
-  { name : 'Community Service Day', newsdate : 'March 28, 2022'},
-  { name : 'Volunteer Team Leaders', newsdate : 'April 11, 2022'},
-  { name : 'PS Easter Egg', newsdate : 'April 18, 2022 '},
+  { name : '10k Yorkshire Hikes', newsdate : 'March 28, 2022'},
+  { name : 'Volunteer Leaders', newsdate : 'April 11, 2022'},
+  { name : 'Publicis Easter Eggs', newsdate : 'April 18, 2022 '},
   { name : 'Matching GiftsSQL', newsdate : 'All Thursdays'}
 ]
 const Events = () => {
@@ -29,6 +29,7 @@ const Events = () => {
       <div className="container events__container">
         <div className="events__frontend">
           <h3>Upcoming Events</h3>
+          {/* <h2>Upcoming Events</h2> */}
           {UpcomingEvents.map( upcomingEvent=> 
               <article className='events__details'>
                 <BsPatchCheckFill className='events__details-icon' />
@@ -42,6 +43,7 @@ const Events = () => {
 
         {/* Listing Latest News */}
         <div className="events__backend">
+        <h3>Latest News</h3>
           <div className="events__content">
                 {LatestNews.map(news => 
                 <article className='events__details'>

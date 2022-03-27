@@ -58,7 +58,7 @@ const TechnolgyNews = () => {
   return (
     <section id='portfolio'>
       <h5>Get Involved</h5>
-      <h2>Technology News</h2>
+      <h2>Articles You Might Like</h2>
       <div className="container technolgyNews__container">
         {
           data.map(({id, image, title, vox, demo}) => {
@@ -68,6 +68,12 @@ const TechnolgyNews = () => {
                 <img src={image} alt={title} />
               </div>
               <h3>{title}</h3>
+              {/* <div className='tag-container'>
+                <div className='tag'>
+                  Data Visualisation
+                  <span>x</span>
+                </div>
+              </div> */}
               <div className="technolgyNews__item-cta">
                 <a href={vox} className='btn' target='_blank'>Vox</a>
                 <a href={demo} className='btn btn-primary' target='_blank'>Read More</a>
